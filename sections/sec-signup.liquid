@@ -1,0 +1,32 @@
+{{ section.settings.richtext_1 }}
+{{ section.settings.richtext_2 }}
+{{ section.settings.richtext_3 }}
+
+{% schema %}
+  {
+    "name": "Paragraph",
+    "tag": "div",
+    "class": "signup_text",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "richtext_1",
+        "label": "Point-01"
+      }, {
+        "type": "richtext",
+        "id": "richtext_2",
+        "label": "Point-02"
+      }, {
+        "type": "richtext",
+        "id": "richtext_3",
+        "label": "Point-03"
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "Signup"
+      }
+    ]
+  }
+{% endschema %}

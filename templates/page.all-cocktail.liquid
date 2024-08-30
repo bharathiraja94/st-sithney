@@ -1,0 +1,111 @@
+
+<!-- <section class="cocktail">
+    <img src="{{ 'cocktailbg.png' | asset_url  }}" class="img-fluid">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center innerpagebannerbox">
+        <h2 class="head">{{ page.title }}</h2>
+      </div>
+    </div>
+  </section> -->
+   {% section 'cocktail-page-bg-image' %}
+<section>
+  <div class="container">
+    <div class="d-flex justify-content-center py-5 cocktailtab">
+        <a href="javascript:void(0)" class="gin_link active" id="gin-link">GIN</a>
+        <a href="javascript:void(0)" class="vodka_link" id="vodka-link">VODKA</a>
+    </div>
+    
+              {% assign ginBlog = blogs['gin']%}
+              {% assign vodkaBlog = blogs['vodka'] %}
+       <div id="blog-posts" class="gin-posts">
+          <div class="row cocktaillist">
+            {% for article in ginBlog.articles %}
+              <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="gin">
+                  {% if article.image %}
+                    <img src="{{ article.image.src | img_url: 'medium' }}" class="img-fluid">
+                  {% else %}
+                    <img src="{{ 'cornish.png' | asset_url }}" class="img-fluid 1">
+                  {% endif %}
+                  <a href="{{ article.url }}">
+                  <h3>
+                    {{ article.title }}
+                  </h3>
+                    <p>{{ article.excerpt }}</p>
+                    </a>
+                  <span class="d-block">
+                   <img src="https://cdn.shopify.com/s/files/1/0822/0514/7429/files/clock.png?v=1694083459" class="clock">
+                    {{ article.metafields.custom.ready_to_time  }}
+                  </span>
+                 </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div id="blog-posts" class="vodka-posts" style="display: none;">
+          <div class="row cocktaillist">
+            {% for article in vodkaBlog.articles %}
+              <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="gin">
+                  {% if article.image %}
+                    <img src="{{ article.image.src | img_url: 'medium' }}" class="img-fluid">
+                  {% else %}
+                    <img src="{{ 'cornish.png' | asset_url }}" class="img-fluid 1">
+                  {% endif %}
+                  <h3>
+                    <a href="{{ article.url }}">{{ article.title }}</a>
+                  </h3>
+                    <p>{{ article.excerpt }}</p>
+                  <span class="d-block">
+                    <img src="https://cdn.shopify.com/s/files/1/0822/0514/7429/files/clock.png?v=1694083459" class="clock">
+                    {{ article.metafields.custom.ready_to_time  }}
+                  </span>
+                 </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+   </div>
+<section>   
+   <!-- <div class="d-flex justify-content-center">
+        <ul class="pagination">
+          <li><a href="#"><i class="fas fa-arrow-circle-left"></i></a></li>
+          <li><a href="#" class="active">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#"><i class="fas fa-arrow-circle-right"></i></a></li>
+        </ul>
+      </div> 
+      -->
+   
+
+{% section 'follow-as' %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var ginLink = document.getElementById('gin-link');
+  var vodkaLink = document.getElementById('vodka-link');
+  var ginActive = document.querySelector('.gin_link');
+  var vodkaActive = document.querySelector('.vodka_link');
+  var ginPosts = document.querySelector('.gin-posts');
+  var vodkaPosts = document.querySelector('.vodka-posts');
+
+  ginLink.addEventListener('click', function() {
+    ginPosts.style.display = 'block';
+    ginActive.classList.add('active'); // Add the 'active' class to the gin-posts container
+    vodkaPosts.style.display = 'none';
+    vodkaActive.classList.remove('active'); // Remove the 'active' class from the vodka-posts container
+  });
+
+  vodkaLink.addEventListener('click', function() {
+    vodkaPosts.style.display = 'block';
+    vodkaActive.classList.add('active'); // Add the 'active' class to the vodka-posts container
+    ginPosts.style.display = 'none';
+    ginActive.classList.remove('active'); // Remove the 'active' class from the gin-posts container
+  });
+});
+
+
+</script>

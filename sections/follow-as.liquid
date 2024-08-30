@@ -1,0 +1,178 @@
+<div class="followus" style="background: url('{{ section. settings.bg_image | img_url: 'master' }}')">
+  <div class="d-block d-sm-none">
+    <div class="d-flex justify-content-center followusmobile">
+      <div class="instapost">
+        <div class="image-container">
+
+          <img src="{{ section .settings .image | img_url:'large'  }}" class="gal1 insta_img">
+          <div class="overlay_img overlay_mob_img">
+            <div class="content content_mob">
+              <a class="social-link" href="{{ section.settings.social_link }}">
+                <img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                <h3>@saintsithney</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instapost gallerygrid">
+        <div class="image-container">
+
+          <img src="{{  section .settings .image_2| img_url:'large' }}" class="gal2 insta_img">
+          <div class="overlay_img overlay_mob_img1">
+            <div class="content content_mob big">
+              <a class="social-link" href="{{ section.settings.social_link }}">
+                <img src="{{'instagram.png' | asset_url }}" alt="New Image">
+                <h3>@saintsithney</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+
+          <img src="{{ section .settings .image_3 | img_url:'large'  }}" class="gal3 insta_img">
+          <div class="overlay_img overlay_mob_img1">
+            <div class="content content_mob_1 ">
+              <a class="social-link" href="{{ section.settings.social_link }}"><img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                <h3>@saintsithney</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-none d-sm-block">
+    <!-- <h1>Follow<span class="d-block">Us</span></h1> -->
+    <div class="row no-gutters">
+      <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="instapost mx-1">
+          <div class="image-container">
+            <img src="{{ section .settings .image | img_url:'large'}}" class="gal1 insta_img">
+            <div class="overlay_img overplay_s_image">
+              <div class="content content_3">
+                <a class="social-link" href="{{ section.settings.social_link }}">
+                  <img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                  <h3>@saintsithney</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 col-sm-12 col-xs-12">
+        <div class="instapost gallerygrid">
+          <div class="image-container">
+            <img src="{{ section .settings .image_2| img_url:'large' }}" class="gal2 insta_img">
+            <div class="overlay_img">
+              <div class="content">
+                <a class="social-link" href="{{ section.settings.social_link }}"><img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                  <h3>@saintsithney</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="image-container">
+            <img src="{{ section .settings .image_3 | img_url:'large' }}" class="gal3 insta_img">
+            <div class="overlay_img">
+              <div class="content content_2">
+                <a class="social-link" href="{{ section.settings.social_link }}"><img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                  <h3>@saintsithney</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="image-container">
+            <img src="{{ section .settings .image_4 | img_url:'large' }}" class="gal4 insta_img">
+            <div class="overlay_img overplay_s4_image">
+              <div class="content content_2">
+                <a class="social-link" href="{{ section.settings.social_link }}">
+                  <img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                  <h3>@saintsithney</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="image-container">
+            <img src="{{ section .settings .image_5| img_url:'large' }}" class="gal2 insta_img">
+            <div class="overlay_img">
+              <div class="content">
+                <a class="social-link" href="{{ section.settings.social_link }}"><img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                  <h3>@saintsithney</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-2 col-sm-12 col-xs-12">
+        <div class="instapost">
+          <div class="image-container">
+            <img src="{{ section .settings .image_6 | img_url:'large' }}" class="gal1 galmob ">
+            <div class="overlay_img overplay_s1_image">
+              <div class="content content_3_1">
+                <a class="social-link" href="{{ section.settings.social_link }}"><img src="{{'instagram.png' | asset_url}}" alt="New Image">
+                  <h3>@saintsithney</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Follow As",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "url",
+        "id": "social_link",
+        "label": "Social Media Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image-1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image-2"
+      }, {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Image-3"
+      }, {
+        "type": "image_picker",
+        "id": "image_4",
+        "label": "Image-4"
+      }, {
+        "type": "image_picker",
+        "id": "image_5",
+        "label": "Image-5"
+      }, {
+        "type": "image_picker",
+        "id": "image_6",
+        "label": "Image-6"
+      }
+
+    ],
+
+    "presets": [
+      {
+        "name": "follow-as"
+      }
+    ]
+  }
+{% endschema %}

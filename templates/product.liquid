@@ -1,0 +1,357 @@
+<section class="product_detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="product_detail_left">
+          {% assign current_variant = product.selected_or_first_available_variant %}
+          {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+          <img
+            id="featured"
+            src="{{ featured_image | img_url: 'master' }}"
+            alt="{{ featured_image.alt | escape }}">
+
+          <div id="slide-wrapper">
+            <!-- <img id="slideLeft" class="arrow" src="images/arrow-left.png"> -->
+            <div id="slider">
+              {% for image in product.images %}
+                <img
+                  class="thumbnail"
+                  src="{{ image.src | img_url: 'master' }}"
+                  alt="{{ image.alt | escape }}">
+              {% endfor %}
+            </div>
+            <!-- <img id="slideRight" class="arrow" src="images/arrow-right.png"> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="product_detail_right">
+          <p>{{ product.type }}</p>
+          <h2>{{ product.title }}</h2>
+          <h3>{{ current_variant.price | money }}</h3>
+          <form
+            action="/cart/add"
+            method="post"
+            enctype="multipart/form-data"
+            id="AddToCartForm">
+            <select
+              name="id"
+              id="productSelect"
+              style="display:none">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option value="{{ variant.id }}">
+                    {{ variant.title }} - {{ variant.price | money_with_currency }}
+                  </option>
+                {% else %}
+                  <option disabled="disabled">
+                    {{ variant.title }} - sold out
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+
+            <div class="quantity buttons_added">
+              <label class="mr-4">QTY</label>
+              <input
+                type="button"
+                value="-"
+                class="minus">
+              <input
+                type="number"
+                step="1"
+                min="1"
+                max=""
+                name="quantity"
+                value="1"
+                title="Qty"
+                class="input-text qty text"
+                size="4"
+                pattern=""
+                inputmode="">
+              <input
+                type="button"
+                value="+"
+                class="plus">
+            </div>
+            <div class="heart-btn" style="display: flex; align-items:center;">
+            <button
+              class="btn btn-primary mr-4 add-to-basket"
+              type="submit"
+              name="add">ADD TO BASKET</button>
+            <a
+              class="wishlist-btn"
+              data-product-id="{{ product.id }}"
+              href="javascript:void(0)">
+           <!--   <i class="far fa-heart"></i> -->
+           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+           <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+         </svg>
+            </a>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="accordion_detail">
+  <div class="container">
+    <div class="row justify-content-end">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+
+        <div class="holder">
+          <p class="wave-line"></p>
+          <!-- <div class="tinyLine tinyLine1"></div>
+          <div class="tinyLine tinyLine2"></div>  -->
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+                onclick="toggleAccordion(1)">
+                DESCRIPTION
+                <span id="toggleSymbol1">+</span>
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">{{ product.description }}
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+                onclick="toggleAccordion(2)">
+                SPECIFICATION
+                <span id="toggleSymbol2">+</span>
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                {{ product.metafields.custom.specification }}
+                <!-- {% render 'shipping' %} -->
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+                onclick="toggleAccordion(3)">
+                DELIVERY
+                <span id="toggleSymbol3">+</span>
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                {{ product.metafields.custom.delivery }}
+                <!-- {{ pages.returns.content }} -->
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if template contains 'product' %}
+        {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+         {%  endif  %}
+        <ul class="d-flex list-inline" data-permalink="{{ permalinkURL }}">  
+          <li>Share</li>
+          <li>
+            <a
+              href="//www.facebook.com/sharer.php?u={{ permalinkURL }}"
+              target="_blank"
+              rel="nofollow">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/sharer/sharer.php?u={{ permalinkURL }}" target="_blank"
+            rel="nofollow">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script type="text/javascript">
+  // Wait for the DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+                                                                                                                                                // Get the quantity input elements
+                                                                                                                                                var quantityInputs = document.querySelectorAll('.qty');
+                                                                                                                                              
+                                                                                                                                                // Attach event handlers to quantity inputs
+                                                                                                                                                quantityInputs.forEach(function(input) {
+                                                                                                                                                  var minusBtn = input.previousElementSibling;
+                                                                                                                                                  var plusBtn = input.nextElementSibling;
+                                                                                                                                              
+                                                                                                                                                  minusBtn.addEventListener('click', function() {
+                                                                                                                                                    var currentValue = parseInt(input.value);
+                                                                                                                                                    if (currentValue > 1) {
+                                                                                                                                                      input.value = currentValue - 1;
+                                                                                                                                                    }
+                                                                                                                                                  });
+                                                                                                                                              
+                                                                                                                                                  plusBtn.addEventListener('click', function() {
+                                                                                                                                                    var currentValue = parseInt(input.value);
+                                                                                                                                                    input.value = currentValue + 1;
+                                                                                                                                                  });
+                                                                                                                                                });
+                                                                                                                                              });</script>
+<script type="text/javascript">
+  let thumbnails = document.getElementsByClassName('thumbnail')
+  let activeImages = document.getElementsByClassName('active')
+                                                                                                                                                                
+                                                                                                                                                                    for (var i = 0; i < thumbnails.length; i++) {
+                                                                                                                                                                
+                                                                                                                                                                      thumbnails[i].addEventListener('mouseover', function () {
+                                                                                                                                                                        console.log(activeImages)
+                                                                                                                                                                
+                                                                                                                                                                        if (activeImages.length > 0) {
+                                                                                                                                                                          activeImages[0].classList.remove('active')
+                                                                                                                                                                        }
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                        this.classList.add('active')
+                                                                                                                                                                        document.getElementById('featured').src = this.src
+                                                                                                                                                                      })
+                                                                                                                                                                    }
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                    let buttonRight = document.getElementById('slideRight');
+                                                                                                                                                                    let buttonLeft = document.getElementById('slideLeft');
+                                                                                                                                                                
+                                                                                                                                                                    buttonLeft.addEventListener('click', function () {
+                                                                                                                                                                      document.getElementById('slider').scrollLeft -= 180
+                                                                                                                                                                    })
+                                                                                                                                                                
+                                                                                                                                                                    buttonRight.addEventListener('click', function () {
+                                                                                                                                                                      document.getElementById('slider').scrollLeft += 180
+                                                                                                                                                                    })</script>
+
+<script>
+  // Function to handle adding/removing product from the wishlist
+  function handleWishlistToggle(productId) {
+
+// Check if the product is already in the wishlist
+    var isInWishlist = localStorage.getItem('wishlist_' + productId);
+
+// If product is in the wishlist, remove it; otherwise, add it
+    if (isInWishlist) {
+      localStorage.removeItem('wishlist_' + productId);
+    } else {
+      localStorage.setItem('wishlist_' + productId, true);
+    }
+
+// Update the UI based on the wishlist status
+    updateWishlistUI(productId);
+  }
+
+// Function to update the UI based on the wishlist status
+  function updateWishlistUI(productId) {
+    var wishlistBtn = document.querySelector('[data-product-id="' + productId + '"]');
+    var isInWishlist = localStorage.getItem('wishlist_' + productId);
+
+// Add/remove 'wishlist' class to change the button appearance
+    if (isInWishlist) {
+      wishlistBtn.classList.add('wishlist');
+    } else {
+      wishlistBtn.classList.remove('wishlist');
+    }
+  }
+
+// Event listener for the wishlist button
+  document.addEventListener('DOMContentLoaded', function() {
+    var wishlistBtns = document.querySelectorAll('.wishlist-btn');
+
+    wishlistBtns.forEach(function(btn) {
+      var productId = btn.dataset.productId;
+
+      btn.addEventListener('click', function() {
+        handleWishlistToggle(productId);
+      });
+
+// Update the initial UI state based on the wishlist status
+      updateWishlistUI(productId);
+    });
+  });
+</script>
+
+
+<script>
+  // toggle class + and -
+
+  function toggleAccordion(buttonId) {
+    var toggleSymbol = document.getElementById("toggleSymbol" + buttonId);
+    if (toggleSymbol.innerHTML === '+') {
+      toggleSymbol.innerHTML = '-';
+    } else {
+      toggleSymbol.innerHTML = '+';
+    }
+  }
+</script>
+
+
+{% comment %} <script type="text/javascript">
+function wcqib_refresh_quantity_increments() {
+jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function (a, b) {
+var c = jQuery(b);
+c.addClass("buttons_added"), c.children().first().before('<input
+type="button"
+value="-"
+class="minus" />'), c.children().last().after('<input
+type="button"
+value="+"
+class="plus" />')
+})
+}
+String.prototype.getDecimals || (String.prototype.getDecimals = function () {
+var a = this,
+b = ("" + a).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+return b ? Math.max(0, (b[1] ? b[1].length : 0) - (b[2] ? +b[2] : 0)) : 0
+}), jQuery(document).ready(function () {
+wcqib_refresh_quantity_increments()
+}), jQuery(document).on("updated_wc_div", function () {
+wcqib_refresh_quantity_increments()
+}), jQuery(document).on("click", ".plus, .minus", function () {
+var a = jQuery(this).closest(".quantity").find(".qty"),
+b = parseFloat(a.val()),
+c = parseFloat(a.attr("max")),
+d = parseFloat(a.attr("min")),
+e = a.attr("step");
+b && "" !== b && "NaN" !== b || (b = 0), "" !== c && "NaN" !== c || (c = ""), "" !== d && "NaN" !== d || (d = 0), "any" !== e && "" !== e && void 0 !== e && "NaN" !== parseFloat(e) || (e = 1), jQuery(this).is(".plus") ? c && b >= c ? a.val(c) : a.val((b + parseFloat(e)).toFixed(e.getDecimals())) : d && b <= d ? a.val(d) : b > 0 && a.val((b - parseFloat(e)).toFixed(e.getDecimals())), a.trigger("change")
+});</script> {% endcomment %}

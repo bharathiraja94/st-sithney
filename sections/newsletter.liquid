@@ -1,0 +1,74 @@
+
+    <div class="container px-lg-4">
+      <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12 px-lg-0">
+          <div class="d-flex justify-content-start newsletter">
+            <h5 class="headtext">{{section .settings .heading}}</h5>
+            {% form 'customer' %}
+              <div class="signform">
+              <input type="email" placeholder="ENTER EMAIL ADDRESS" value="" name="contact[email]" />
+              <button type="submit" value="Subscribe"><i class="fas fa-check"></i></button>
+              </div>
+            {% endform %}
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 px-lg-0">
+          <div class="d-flex justify-content-start newsletterfollow">
+            <h5 class="headtext follow-heading">{{section .settings .heading_1}}</h5>
+            <ul class="list-inline social_list">
+              <li>
+                <a href="{{ section .settings .facebook_link }}"><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li>
+                <a href="{{ section .settings .insta_link }}"><i class="fab fa-instagram"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+{% schema %}
+  {
+    "name": "Newsletter",
+     "tag": "section",
+    "settings": [
+           {
+            "type": "text",
+            "id": "heading",
+            "label": "heading",
+            "info": "Newsletter"
+           },
+           {
+            "type": "text",
+            "id": "heading_1",
+            "label": "heading",
+            "info": "Follow Us"
+           },
+           {
+            "type": "url",
+            "id": "facebook_link",
+            "label": "Facebook Link"
+            
+           },
+           {
+            "type": "url",
+            "id": "insta_link",
+            "label": "Instagram Link"
+            
+           }
+
+
+    ],
+    "presets": [
+      {
+        "name": "newsletter"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

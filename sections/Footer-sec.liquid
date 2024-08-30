@@ -1,0 +1,112 @@
+<style>
+ .panel {
+  display: none;
+}
+
+  
+</style>
+<footer style="background: url('{{ section. settings.bg_image | img_url: 'master' }}')">      
+  <div class="container  d-none d-sm-block">
+      <div class="d-flex flex-row justify-content-between footerbottom">  
+     {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+     {% if block .type =='navigation' %}
+       <div class="menu-content">
+        <div class="footer_box">
+           <h6> {{ block.settings.linklist.title }}</h6>
+          <ul class="footer_link">
+            {% for link in block.settings.linklist.links  %}
+             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+      </div> 
+       </div>
+       {% endif %}
+          {% endfor %}
+      {% endif %}
+      </div>
+  </div>
+<div class="d-block d-sm-none">
+  <div class="ac1 mobile-footer footer_box">
+  {%- if section.blocks.size > 0 -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'navigation' -%}       
+           <h6 class="accordion ">
+              {{ block.settings.linklist.title }}
+            </h6>        
+        <div class="panel">
+          <ul class="footer_link section-content">
+            {%- for link in block.settings.linklist.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+   </div>
+ </div>
+  <div class="d-flex justify-content-start container">
+      <p class="copyright_text">&copy; {{ 'now' | date: '%Y' }} {{ shop.name  }}.
+        All Rights Reserved.</p>
+    </div>
+</footer>
+
+{% schema %}
+   {
+
+    "name": "Footer ",
+    "tag": "section",
+    "class": "Footer",
+    "max_blocks": 5,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Navigation Column",
+        "type": "navigation",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "linklist",
+            "label": "Menu"
+          } 
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Footer"
+      }
+    ]
+  }
+  
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %} 
+
+  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("click", function(event) {
+    if (event.target.classList.contains("accordion")) {
+      const panel = event.target.nextElementSibling;
+      if (panel) {
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      }
+    }
+  });
+});
+
+{% endjavascript %}
+
+  

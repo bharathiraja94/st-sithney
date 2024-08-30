@@ -1,0 +1,49 @@
+<div style="background: url('{{ section. settings.bg_image | img_url: 'master' }}')" class="contact_section pt-100 pb-100">
+  <h1 class="where_heading1 d-block d-sm-none">{{ section.settings.heading }}
+  </h1>
+  <div class="container">
+    <div class="d-flex justify-content-start wherebox">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <img class="img-fluid" src="{{ section .settings.image |img_url: 'master'}}">
+      </div>
+      <div class="col-md-6  col-sm-12 col-xs-12">
+        <h1 class="where_heading  d-none d-sm-block">{{ section.settings.heading }}
+        </h1>
+        {{ section.settings.text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Contact",
+    "tag": "section",
+    "class": "contact",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Desktop Heading"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "richtext",
+        "id": "text",
+        "label": "Paragraph"
+      }, {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "contact"
+      }
+    ]
+  }
+{% endschema %}

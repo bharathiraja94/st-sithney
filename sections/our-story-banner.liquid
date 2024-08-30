@@ -1,0 +1,29 @@
+<div>
+  <img src="{{  section.settings.image |img_url: 'master' }}" class="img-fluid pt-150" />
+  <img src="{{ section.settings.image_2 |img_url: 'master'  }}" class="img-fluid" />
+</div>
+
+{% schema %}
+  {
+    "name": "Our Story Banner",
+    "tag": "section",
+    "class": "image-banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "First Image"
+      }, {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Second Image"
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "Our-story-banner"
+      }
+    ]
+  }
+{% endschema %}

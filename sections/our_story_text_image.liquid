@@ -1,0 +1,105 @@
+<div class="ourstory" style="background: url('https://saintsithney-new.myshopify.com/cdn/shop/files/ourstorybg.webp?v=1694074435')">
+  <div class="container">
+    <div class="row">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {% capture image_layout %}
+            <div class="col col-md-6 col-sm-12 col-xs-12 col-12">
+              <div class="ourstorybox">
+                <img src="{{ block .settings .image | img_url:'large' }}">
+              </div>
+            </div>
+          {% endcapture %}
+          {% if block.settings.layout == 'left' %}
+            {{ image_layout }}
+          {% endif %}
+          <div class="col col-md-6 col-sm-12 col-xs-12 col-12 d-flex align-items-center">
+            <div class="ourstorybox">
+              <h2>
+                {{ block.settings.heading }}</h2>
+              <p>
+                {{ block.settings.inline_richtext }}</p>
+              <p>{{ block.settings.inline_richtext_1 }}</p>
+              <p>{{ block.settings.inline_richtext_2 }}</p>
+            </div>
+          </div>
+          {% if block.settings.layout == 'right' %}
+            {{ image_layout }}
+          {% endif %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+
+    "name": "Text-With-Image",
+    "tag": "section",
+    "class": "text-with-image",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "image-with-text",
+        "type": "image-with-text",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "layout",
+            "label": "Image alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "inline_richtext",
+            "label": "Description"
+          }, {
+            "type": "inline_richtext",
+            "id": "inline_richtext_1",
+            "label": "Description"
+          }, {
+            "type": "inline_richtext",
+            "id": "inline_richtext_2",
+            "label": "Description"
+          }
+        ]
+      }
+    ],
+
+
+
+    "presets": [
+      {
+        "name": "text-with-image"
+      }
+    ]
+  }
+{% endschema %}

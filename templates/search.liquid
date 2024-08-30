@@ -1,0 +1,35 @@
+<section class="pt-100">
+  <div class="container">
+    <div class="row">
+    {% paginate search.results by 100 %}
+      {% if search.performed %}
+        {% for item in search.results %}
+          {% if item.object_type == 'product'  %} <!--and item.available -->
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <div class="product" style="text-align: center;">
+                <img
+                  src="{{ item.featured_image.src | img_url: 'large' }}"
+                  alt="{{ item.featured_image.alt | escape }}"
+                  class="img-fluid">
+                <div class="text-center product_innerbox">
+                  <h2>Saint Sithney</h2>
+                  <p>
+                    <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
+                      {{ item.title | escape }}</a>
+                  </p>
+                  <span class="d-block">{{ item.price | money }}</span>
+                  {% unless item.available %}<br><strong>sold out</strong>
+                  {% endunless %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if paginate.pages > 1 %}
+        {{ paginate | default_pagination }}{% endif %}
+    {% endpaginate %}
+    </div>
+  </div>
+</section>

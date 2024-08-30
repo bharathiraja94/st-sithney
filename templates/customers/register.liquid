@@ -1,0 +1,178 @@
+<!-- /templates/customers/register.liquid -->
+<section class="pt-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center login">
+        <h1 class="heading">SIGN UP</h1>
+        <a href="#">Already a member? Click here to Sign In.</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pb-5 signup">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!--           <form class="form-group my-4"> -->
+
+        {%- form 'create_customer', novalidate: 'novalidate', class: 'form-group my-4' -%}
+          {%- if form.errors -%}
+            <ul>
+              {%- for field in form.errors -%}
+                <li>
+                  {%- if field == 'form' -%}
+                    {{ form.errors.messages[field] }}
+                  {%- else -%}
+                    <a href="#RegisterForm-{{ field }}">
+                      {{ form.errors.translated_fields[field] | capitalize }}
+                      {{ form.errors.messages[field] }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          <div class="row">
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+                name="customer[first_name]"
+                id="RegisterForm-FirstName"
+                {% if form.first_name %}value=" {{ form.first_name }}"{% endif %}>
+            </div>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Last Name"
+                name="customer[last_name]"
+                id="RegisterForm-LastName"
+                {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+            </div>
+            <div class="col-sm-6">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email Address"
+                name="customer[email]"
+                id="RegisterForm-email"
+                {% if form.email %}
+                value="{{ form.email }}"
+                {% endif %}
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="email"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="RegisterForm-email-error"
+                {% endif %}>
+
+              {%- if form.errors contains 'email' -%}
+                <span id="RegisterForm-email-error" class="form__message">
+                  {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+                </span>
+              {%- endif -%}
+            </div>
+            <div class="col-sm-6">
+              <div class="d-flex justify-content-between">
+                <input
+                  type="text"
+                  class="form-control dobinput"
+                  placeholder="DD">
+                <input
+                  type="text"
+                  class="form-control dobinput"
+                  placeholder="MM">
+                <input
+                  type="text"
+                  class="form-control dobinputyear"
+                  placeholder="YYYY">
+              </div>
+
+            </div>
+            <div class="col-sm-6">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                name="customer[password]"
+                id="RegisterForm-password"
+                aria-required="true"
+                {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="RegisterForm-password-error"
+                {% endif %}>
+              {%- if form.errors contains 'password' -%}
+                <span id="RegisterForm-password-error" class="form__message">
+                  {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
+                </span>
+              {%- endif -%}
+            </div>
+            <div class="col-sm-6">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Retype Password">
+            </div>
+          </div>
+          <div class="col-sm-12 text-left">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input
+                type="radio"
+                id="customRadioInline1"
+                name="customRadioInline"
+                class="custom-control-input">
+              <label class="custom-control-label catogry" for="customRadioInline1">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input
+                type="radio"
+                id="customRadioInline2"
+                name="customRadioInline"
+                class="custom-control-input">
+              <label class="custom-control-label catogry" for="customRadioInline2">Female</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input
+                type="radio"
+                id="customRadioInline3"
+                name="customRadioInline"
+                class="custom-control-input">
+              <label class="custom-control-label catogry" for="customRadioInline3">Others</label>
+            </div>
+          </div>
+          <div class="col-sm-12 text-left mt-3">
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">I agree to the Saint Sithney Terms & Conditions
+                and Privacy Policy</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customCheck2">
+              <label class="custom-control-label" for="customCheck2">I want to receive information about Saint Sithney
+                news and products.</label>
+            </div>
+          </div>
+          <div class="col-sm-12 mt-3 text-sm-center ">
+            <input
+              type="submit"
+              value="submit"
+              class="btn btn-primary submit">
+          </div>
+        {%- endform -%}
+        {% section 'sec-signup' %}
+      </div>
+    </div>
+  </div>
+</section>

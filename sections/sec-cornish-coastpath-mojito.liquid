@@ -1,0 +1,253 @@
+<div class="receipe" style="background: url('{{ section. settings.bg_image | img_url: 'master' }}')">
+  <div class="container">
+    <div class="row">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="col col-md-5 col-sm-12 col-xs-12 col-12">
+            <div class="ingredient">
+              <h3>{{ block.settings.heading }}</h3>
+              <ul>
+                <li>{{ block.settings.text_1 }}</li>
+                <li>{{ block.settings.text_2 }}</li>
+                <li>{{ block.settings.text_3 }}</li>
+                <li>{{ block.settings.text_4 }}</li>
+                <li>{{ block.settings.text_5 }}</li>
+                <li>{{ block.settings.text_6 }}</li>
+                <li>{{ block.settings.text_7 }}</li>
+                <li>{{ block.settings.text_8 }}</li>
+                <li>{{ block.settings.text_9 }}</li>
+                <li>{{ block.settings.text_10 }}</li>
+              </ul>
+              <p class="mt-4 d-flex">
+            <img src=" {{ block .settings .image | img_url: 'small' }}" alt="" class="warning-img">   
+                {{ block.settings.paragraph }}
+              </p>
+            </div>
+          </div>
+          <div class="col col-md-7 col-sm-12 col-xs-12 col-12">
+            <div class="method">
+              <h3>{{ block.settings.heading_1 }}</h3>
+              <ul>
+                <li>
+                  <span>{{ block.settings.Number_1 }}</span>
+                  {{ block.settings.text_11 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_2 }}</span>
+                  {{ block.settings.text_12 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_3 }}</span>
+                  {{ block.settings.text_13 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_4 }}</span>
+                  {{ block.settings.text_14 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_5 }}</span>
+                  {{ block.settings.text_15 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_6 }}</span>
+                  {{ block.settings.text_16 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_7 }}</span>
+                  {{ block.settings.text_17 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_8 }}</span>
+                  {{ block.settings.text_18 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_9 }}</span>
+                  {{ block.settings.text_19 }}</li>
+                <li>
+                  <span>{{ block.settings.Number_10 }}</span>
+                  {{ block.settings.text_20 }}</li>
+              </ul>
+              <a class="btn btn-primary checkout download-btn" href="{{ section.settings.button_link }}">{{ section.settings.text }}</a>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Ingredients",
+    "tag": "section",
+    "class": "ingredients",
+    "max_blocks": 1,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      }, {
+        "type": "text",
+        "id": "text",
+        "label": "Download Recipes",
+        "info": "Download Recipe"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Download Recipes-link"
+      }
+
+
+    ],
+    "blocks": [
+      {
+        "name": "Ingredients and method",
+        "type": "ingredients",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "info": "Ingredients"
+          },
+          {
+            "type": "text",
+            "id": "text_1",
+            "label": "Point-1"
+          },
+          {
+            "type": "text",
+            "id": "text_2",
+            "label": "Point-2"
+          },
+          {
+            "type": "text",
+            "id": "text_3",
+            "label": "Point-3"
+          }, {
+            "type": "text",
+            "id": "text_4",
+            "label": "Point-4"
+          }, {
+            "type": "text",
+            "id": "text_5",
+            "label": "Point-5"
+          }, {
+            "type": "text",
+            "id": "text_6",
+            "label": "Point-6"
+          }, {
+            "type": "text",
+            "id": "text_7",
+            "label": "Point-7"
+          }, {
+            "type": "text",
+            "id": "text_8",
+            "label": "Point-8"
+          }, {
+            "type": "text",
+            "id": "text_9",
+            "label": "Point-9"
+          }, {
+            "type": "text",
+            "id": "text_10",
+            "label": "Point-10"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Icon Image"
+          }, {
+            "type": "text",
+            "id": "paragraph",
+            "label": "Paragraph"
+          }, {
+            "type": "text",
+            "id": "heading_1",
+            "label": "Heading",
+            "info": "Method"
+          }, {
+            "type": "number",
+            "id": "Number_1",
+            "label": "Number List 1"
+          }, {
+            "type": "text",
+            "id": "text_11",
+            "label": "Point-1"
+          }, {
+            "type": "number",
+            "id": "Number_2",
+            "label": "Number List 2"
+          }, {
+            "type": "text",
+            "id": "text_12",
+            "label": "Point-2"
+          }, {
+            "type": "number",
+            "id": "Number_3",
+            "label": "Number List 3"
+          }, {
+            "type": "text",
+            "id": "text_13",
+            "label": "Point-3"
+          }, {
+            "type": "number",
+            "id": "Number_4",
+            "label": "Number List 4"
+          }, {
+            "type": "text",
+            "id": "text_14",
+            "label": "Point-4"
+          }, {
+            "type": "number",
+            "id": "Number_5",
+            "label": "Number List 5"
+          }, {
+            "type": "text",
+            "id": "text_15",
+            "label": "Point-5"
+          }, {
+            "type": "number",
+            "id": "Number_6",
+            "label": "Number List 6"
+          }, {
+            "type": "text",
+            "id": "text_16",
+            "label": "Point-6"
+          }, {
+            "type": "number",
+            "id": "Number_7",
+            "label": "Number List 7"
+          }, {
+            "type": "text",
+            "id": "text_17",
+            "label": "Point-7"
+          }, {
+            "type": "number",
+            "id": "Number_8",
+            "label": "Number List 8"
+          }, {
+            "type": "text",
+            "id": "text_18",
+            "label": "Point-8"
+          }, {
+            "type": "number",
+            "id": "Number_9",
+            "label": "Number List 9"
+          }, {
+            "type": "text",
+            "id": "text_19",
+            "label": "Point-9"
+          }, {
+            "type": "number",
+            "id": "Number_10",
+            "label": "Number List 10"
+          }, {
+            "type": "text",
+            "id": "text_20",
+            "label": "Point-10"
+          }
+        ]
+      }
+    ],
+
+
+    "presets": [
+      {
+        "name": "Ingredients"
+      }
+    ]
+  }
+{% endschema %}

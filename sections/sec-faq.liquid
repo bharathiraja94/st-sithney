@@ -1,0 +1,32 @@
+<div class="ourstory">
+<div class="container">
+   {%for faq in shop.metaobjects.faq.values %}
+     <div class="ingredient">
+       <h3> {{ faq.heading }}</h3>
+       <ul>
+       <li>{{ faq.description }} </li>  
+       </ul>
+     </div>
+  {% endfor %} 
+</div>
+</div>
+
+{% schema %}
+ {
+    "name": "sec-faq",
+    "tag": "section",
+    "class": "sec-faq",
+    
+   "presets": [
+      {
+        "name": "sec-faq"
+      }
+    ]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

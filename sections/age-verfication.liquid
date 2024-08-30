@@ -1,0 +1,418 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.0/js.cookie.min.js"></script>
+<script src="https://unpkg.com/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
+
+
+
+<div class="age-verification-popup popup-bg_img">
+  {% comment %} <img src="{{ "indexbanner.png" | asset_url }}" alt="" srcset=""> {% endcomment %}
+  <div class="range-wrap">
+    <div class="range_out">
+      <img
+        src="{{ 'logo.png' | asset_url  }}"
+        alt=""
+        srcset=""
+        class="popup_image">
+      <h2 class="popup_heading">Select Your Age</h2>
+      <div class="popup_cont">
+        <div class="number_">
+          <span>0</span>
+          <span>100</span>
+        </div>
+        <input
+          type="range"
+          class="range"
+          min="1"
+          max="100"
+          step="1"
+          value="1">
+        <output class="bubble"></output>
+      </div>
+      <p class="error_msg">You must be over the age of 18 to view this site.</p>
+
+      <div class="enter_btn">
+        <button class="submit-btn">Enter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  body {
+    overflow: hidden;
+  }
+  .age-verification-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    background-color: rgba(3, 3, 3, 0.87);
+
+  }
+  .popup_image {
+    width: 180px;
+    height: auto;
+    margin-top: -26px;
+  }
+  .age-verification-popup {
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .popup_cont {
+    position: relative;
+  }
+  .age-verification-popup .range-wrap {
+    /* Add styles for the range wrap container */
+    position: relative;
+    height: 546px;
+    width: 1000px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+  .range_out {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #c3a06f;
+    padding: 73px 230px;
+  }
+
+
+  .age-verification-popup .bubble {
+    /* Add styles for the bubble output */
+    background: #0a0340;
+    color: white;
+    top: -20%;
+    padding: 4px 15px;
+    position: absolute;
+    font-size: 10px;
+    left: 50%;
+    transform: translateX(-34%);
+
+  }
+  .age-verification-popup .bubble::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 22px;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #0a0340;
+  }
+  .popup_heading {
+    font-family: 'oswald', sans-serif;
+    font-size: 23px;
+    text-transform: uppercase;
+    color: #5d587b;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 7%;
+    margin-top: 11%;
+  }
+  .number_ {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #cfcdd9;
+    font-size: 11px;
+    font-family: 'Roboto', sans-serif;
+
+  }
+  .submit-btn {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding: 10px 60px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+    background-color: #0a0340;
+    border-color: #c3a06f;
+    border-width: 2px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .enter_btn {
+    text-align: center;
+    margin-top: 25px;
+  }
+  .error_msg {
+    color: #cfcdd9;
+    margin: 20px 0;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  input[type="range"] {
+    /* Add styles for the range input */
+    width: 500px;
+    height: 8px;
+    cursor: pointer;
+    outline: none;
+    /*  slider progress trick  */
+    /*  overflow: hidden;*/
+    border-radius: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #cfcdd9;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 4px solid #5d587b;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    height: 23px;
+    width: 23px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #fff;
+    border-radius: 50%;
+    border: 4px solid #5d587b;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-ms-thumb {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    border: 4px solid #5d587b;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  @media(min-width: 768px) and (max-width: 1023px) {
+    .age-verification-popup .range-wrap {
+      height: 400px;
+      width: 650px;
+    }
+    .popup_image {
+      width: 169px;
+    }
+    .popup_heading {
+      margin: 5% 0;
+      font-size: 18px;
+    }
+    input[type="range"] {
+      width: 470px;
+      height: 7px;
+    }
+    .error_msg {
+      margin: 17px 0;
+    }
+    .enter_btn {
+      text-align: center;
+      margin-top: 22px;
+    }
+    .submit-btn {
+      padding: 10px 50px;
+    }
+    .range_out {
+      padding: 30px 68px;
+
+    }
+  }
+  @media(min-width: 330px) and (max-width: 767px) {
+    .age-verification-popup .range-wrap {
+      height: 423px;
+      width: 365px;
+    }
+    .range_out {
+      padding: 46px 22px;
+    }
+    .popup_image {
+      width: 160px;
+    }
+    .number_ {
+      margin-bottom: 5px;
+    }
+    .popup_heading {
+      font-size: 18px;
+      margin: 11% 0;
+    }
+    input[type="range"] {
+      width: 288px;
+      height: 5px;
+    }
+    .error_msg {
+      margin: 17px 0;
+      font-size: 11px;
+    }
+    .enter_btn {
+      margin-top: 15px;
+    }
+    .submit-btn {
+      padding: 10px 50px;
+    }
+  }
+  @media(min-width: 280px) and (max-width: 329px) {
+    .age-verification-popup .range-wrap {
+      height: 450px;
+      width: 300px;
+    }
+    .range_out {
+      padding: 60px 10px;
+    }
+    popup_image {
+      width: 120px;
+      height: auto;
+      margin-top: -20px;
+    }
+    .popup_heading {
+      font-size: 14px;
+      margin-top: 13%;
+
+    }
+    input[type="range"] {
+      width: 250px;
+    }
+    .error_msg {
+      margin: 17px 0;
+      font-size: 10px;
+    }
+    .submit-btn {
+      padding: 10px 47px;
+      font-size: 13px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var ageVerificationPopup = document.querySelector(".age-verification-popup");
+    var rangeInput = ageVerificationPopup.querySelector(".range");
+    var bubbleOutput = ageVerificationPopup.querySelector(".bubble");
+    var submitButton = ageVerificationPopup.querySelector(".submit-btn");
+    var errorMessage = document.querySelector(".error_msg");
+
+// Hide the popup if the user is already verified
+    if (Cookies.get('ageVerified') === 'true') {
+      ageVerificationPopup.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    rangeInput.addEventListener("input", function() {
+      bubbleOutput.textContent = rangeInput.value;
+    });
+
+    submitButton.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      if (rangeInput.value >= 18) {
+        ageVerificationPopup.style.display = "none";
+        document.body.style.overflow = "auto";
+        Cookies.set('ageVerified', 'true', {expires: 30});
+      } else {
+        if (! ageVerificationPopup.contains(errorMessage)) {
+          ageVerificationPopup.appendChild(errorMessage);
+          document.body.style.overflow = "hidden";
+        }
+      }
+    });
+  });
+</script>
+<script>
+  // range number input //
+
+  const allRanges = document.querySelectorAll(".range-wrap");
+  allRanges.forEach(wrap => {
+    const range = wrap.querySelector(".range");
+    const bubble = wrap.querySelector(".bubble");
+
+    range.addEventListener("input", () => {
+      setBubble(range, bubble);
+    });
+    setBubble(range, bubble);
+  });
+
+  function setBubble(range, bubble) {
+    const val = range.value;
+    const min = range.min
+      ? range.min
+      : 0;
+    const max = range.max
+      ? range.max
+      : 100;
+    const newVal = Number(((val - min) * 100) / (max - min));
+    bubble.innerHTML = val;
+
+// Sorta magic numbers based on size of the native UI thumb
+    bubble.style.left = `calc(${newVal}% + (${
+      -0 - newVal * 0.15
+    }px))`;
+
+// bubble.style.left = `calc(${newVal}% + (${ 8 - newVal * 0.15}px))`; (origal-code)
+  }
+
+</script>
+
+<script>
+
+  // submit button opacity
+
+  var rangeInput = document.querySelector(".range");
+  var submitButton = document.querySelector(".submit-btn");
+
+  rangeInput.addEventListener("input", function() {
+    var value = rangeInput.value;
+
+    if (value >= 18) {
+      submitButton.style.opacity = "1";
+    } else {
+      submitButton.style.opacity = "0.5";
+    }
+  });
+</script>
+<script>
+  // input range background color
+
+  const slider = document.querySelector(".range");
+  const min = slider.min
+  const max = slider.max
+  const value = slider.value
+
+  slider.style.background = `linear-gradient(to right, #0a0340 0%, #0a0340 ${
+    (value - min) / (max - min) * 100
+  }%, #DEE2E6 ${
+    (value - min) / (max - min) * 100
+  }%, #DEE2E6 100%)`
+
+  slider.oninput = function() {
+    this.style.background = `linear-gradient(to right, #0a0340 0%, #0a0340 ${
+      (this.value - this.min) / (this.max - this.min) * 100
+    }%, #DEE2E6 ${
+      (this.value - this.min) / (this.max - this.min) * 100
+    }%, #DEE2E6 100%)`
+  };
+</script>

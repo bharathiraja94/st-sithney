@@ -1,0 +1,92 @@
+<section style="background: url('{{ section. settings.bg_image | img_url: 'master' }}')" class="index_second">
+  <div class="container">
+    <div class="d-flex justify-content-center position-relative index_second_flex">
+      <img src="{{ section.settings.image |img_url: 'master' }}" class="img-fluid indexheading">
+      <img src="{{ section.settings.image_2 |img_url:'master' }}">
+      <div class="mt-300">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {{ block.settings.richtext }}
+            <a  href="{{ block .settings.button_link }}" class="btn btn-primary  buynow1">{{ block.settings.button_text }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Index Second",
+    "class": "index-second",
+    "max_blocks": 2,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Heading Image"
+      }, {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "First Image"
+      }
+
+    ],
+    "blocks": [
+      {
+        "name": "text-button",
+        "type": "text-with-button",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "richtext",
+            "label": "Text"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          }, {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "index-second",
+        "blocks": [
+          {
+            "type": "text-with-button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+
+const boxes = document.getElementsByClassName('buynow1');
+
+for (let i = 0; i < boxes.length; i++) {
+  boxes[i].addEventListener('mouseenter', function() {
+    this.classList.add('hover');
+    this.classList.remove('leave');
+  });
+
+  boxes[i].addEventListener('mouseleave', function() {
+    this.classList.remove('hover');
+    this.classList.add('leave');
+  });
+}
+
+{% endjavascript %}

@@ -1,0 +1,60 @@
+<div class="cocktail">
+  <img src="{{ 'cocktailbg.png' | asset_url  }}" class="img-fluid">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center innerpagebannerbox">
+      <h2 class="head">{{ blog.title }}</h2>
+    </div>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="d-flex justify-content-center py-5 cocktailtab">
+      <a href="#" class="active">GIN</a>
+      <a href="#">VODKA</a>
+    </div>
+    <div class="row cocktaillist">
+      {{ page.content }}
+      {% assign blog_handles = "cornish-coastpath-mojito,gin-fizz,saint-sithney-seaweed-martini,blog2,blog3" | split: "," %}
+      {% for handle in blog_handles %}
+        {% for article in blogs[handle].articles %}
+          <h2>
+            <a href="{{ article.url }}">{{ article.title }}</a>
+          </h2>
+        {% endfor %}
+      {% endfor %}
+
+
+
+    </div>
+    <div class="d-flex justify-content-center">
+      <ul class="pagination">
+        <li>
+          <a href="#">
+            <i class="fas fa-arrow-circle-left"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#">4</a>
+        </li>
+        <li>
+          <a href="#">5</a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

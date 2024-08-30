@@ -1,0 +1,109 @@
+<section class="cocktail">
+  <img src="{{ 'allproductbg.png' | asset_url  }}" class="img-fluid">
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center innerpagebannerbox">
+      <h2 class="head">{{ collection.title }}</h2>
+    </div>
+  </div>
+</section>
+<section class="allproduct">
+  <div class="d-block d-sm-none">
+    <div class="container">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide allproductslider"
+        data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li
+            data-target="#carouselExampleIndicators"
+            data-slide-to="0"
+            class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          {% assign my_counter = 1 %}
+
+          {% paginate collection.products by 100 %}
+            {% for product in collection.products %}
+              {% if my_counter == 1 %}
+                {% assign sctiveCls = 'active' %}
+              {% else if %}
+                {% assign sctiveCls = '' %}
+              {% endif %}
+              <div class="carousel-item {{ sctiveCls }}">
+                <div class="product" style="text-align: center;">
+                  <img
+                    src="{{ product.featured_image.src | img_url: 'large' }}"
+                    alt="{{ product.featured_image.alt | escape }}"
+                    class="img-fluid">
+                  <div class="text-center product_innerbox">
+                    <h2>Saint Sithney</h2>
+                    <p>
+                      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                    </p>
+                    <span class="d-block">{{ product.price | money }}</span>
+                    {% unless product.available %}<br><strong>sold out</strong>
+                    {% endunless %}
+                  </div>
+                </div>
+              </div>
+              {% assign my_counter = my_counter | plus: 1 %}
+            {% else %}
+              <p>no matches</p>
+            {% endfor %}
+            {% if paginate.pages > 1 %}
+              {{ paginate | default_pagination }}
+            {% endif %}
+          {% endpaginate %}
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container d-none d-sm-block">
+    <div class="row">
+      {% paginate collection.products by 6 %}
+        {% for product in collection.products %}
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="product" style="text-align: center;">
+              <img
+                src="{{ product.featured_image.src | img_url: 'large' }}"
+                alt="{{ product.featured_image.alt | escape }}"
+                class="img-fluid">
+              <div class="text-center product_innerbox">
+                <h2>Saint Sithney</h2>
+                <p>
+                  <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                </p>
+                <span class="d-block">{{ product.price | money }}</span>
+                {% unless product.available %}<br><strong>sold out</strong>
+                {% endunless %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <p>no matches</p>
+        {% endfor %}
+        {% if paginate.pages > 1 %}
+          {{ paginate | default_pagination }}
+        {% endif %}
+      {% endpaginate %}
+    </div>
+  </div>
+</section>

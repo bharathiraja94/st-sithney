@@ -1,0 +1,296 @@
+<style>
+/* search button */
+@media only screen and (min-width: 310px) and (max-width: 767px) {
+  #content_search_box {
+    top: 39% !important;
+  }
+  .search_close:before {
+    margin-top:3px !important;
+  }
+  .search_close:after {
+    margin-top: 3px !important;
+  }
+}
+
+#content_search_box {
+  z-index: 99;
+  position: absolute;
+  height: 50px;
+  width: 300px;
+  top: 38%;
+  left: 118%;
+  font-size: 17px;
+
+}
+
+#content_search_box.on {
+  animation-name: in-out;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+.search_input {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c3a06f;
+  border-radius: 50%;
+  background: none;
+  outline: 0;
+  transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
+  transition-delay: 0.4s;
+  transform: translate(4%, -50%);
+}
+
+.search_btn {
+  background: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 44px;
+  padding: 0;
+  border-radius: 100%;
+  outline: 0;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  transform: translate(4%, -50%);
+}
+
+.search_btn:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background-color: #c3a06f;
+  transform: rotate(45deg);
+  margin-top: 13px;
+  margin-left: -7px;
+  transition: 0.2s ease-in-out;
+}
+
+.search_close {
+  transition: 0.4s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.search_close:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  margin-top: 2px;
+  margin-left: -13px;
+  background-color: #c3a06f;
+  transform: rotate(45deg);
+  transition: 0.2s ease-in-out;
+}
+
+.search_close:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background-color: #c3a06f;
+  margin-top: 2px;
+  margin-left: -13px;
+  cursor: pointer;
+  transform: rotate(-45deg);
+}
+
+.search_square {
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0 0 0 25px;
+    width: 175px;
+    height: 23px;
+    border: 1px solid #c3a06f;
+    border-radius: 0;
+    background: none;
+    color:#0a0340 ;
+    background-color: #fff;
+    font-family: ' Roboto',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    outline: 0;
+    transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+    transition-delay: 0.4s, 0s, 0.4s;
+   transform: translate(4%, -50%);
+}
+</style>
+<header>
+    <div class="d-flex justify-content-between pt-3 align-items-center">
+      <div class="d-flex justify-content-start position-relative ">
+        <a id="menu-toggle" href="javascript:void(0)" class="toggle">
+         <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
+          <img src="{{'icons8-menu-52.png' | asset_url }}" alt="New Image" style="width:20px;height:26px"> 
+          </a>
+        <a href="#" class="dropdown-toggle menu ml-3" data-toggle="dropdown" role="button" aria-expanded="false">
+        <!--   <i class="fas fa-shopping-bag"></i> -->
+        <img src="{{'icons8-shop-bag.png' | asset_url }}" alt="New Image" style="width:25px;height:25px"> 
+        </a>
+        <div class="dropdown-menu dropdown-cart" role="menu">
+          <h2 class="text-center">BASKET</h2>
+          {%- if cart != empty -%}
+          {% for item in cart.items %}
+          <div class="d-flex justify-content-start">
+            <div class="basket text-left">
+              <div class="d-flex justify-content-start">
+                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}" />
+                <div>
+                  <h4>{{ item.product.title }}</h4>
+                  <p class="product-type">{{ item.product.type}}</p>
+                  <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Remove
+                  </a>
+                </div>
+              </div>
+            </div>
+          <!--  <div class="basket pl-3">
+              <p>{{ item.price | money }}</p>
+            </div> -->
+          </div>
+          {% endfor %}
+          <div class="row">
+            <div class="col-md-12 subtotal text-center p-3">
+              <div class="d-flex justify-content-between px-5">
+                <h5>Subtotal</h5>
+                <h5>{{ cart.total_price | money }}</h5>
+              </div>
+              <p>
+                <span>Tax included. Shipping calculated at checkout.</span>
+              </p>
+              <a href="/cart" class="btn btn-primary header_checkout">CHECKOUT</a>
+              <a href="/cart" class="d-block text-center mt-3 viewbasket">View basket</a>
+            </div>
+          </div>
+          {%- else -%}
+          <h3>Cart empty</h3>
+          {%- endif -%}          
+        </div>
+        <form id="content_search_box" action="/search"method="get" role="search" class="d-sm-block">
+          <input
+            type="search"
+            name="q"
+            class="search_input"
+            id="search-input"
+            value="{{ search.terms | escape }}">
+          <button
+            type="reset"
+            class="search_btn"
+            id="search-btn"></button>
+        </form>
+       <!--<h6 class="menu mx-4  d-none d-sm-block header-search-button">SEARCH</h6> -->
+       </div>
+
+       
+      <a href="/">
+         <!-- <img src="{{ 'logo.png' | asset_url  }}" class="logo" /> -->
+         <img src="{{ section.settings.logo | img_url:'master' }}" class="logo" />
+      </a>
+    </div>
+    
+    <div id="sidebar-wrapper">
+      <div class="d-flex justify-content-between my-3 mx-4 align-items-center">
+        <a id="menu-close" href="#" class="close_search btn btn-default btn-lg pull-right px-1 mx-3 toggle">
+       <!--    <i style="color:#c3a06f" class="fas fa-times fa-lg"></i> -->
+        <img src="{{'icons8-x-48.png' | asset_url }}" alt="New Image" style="width:38px;height:27px"> 
+        </a>
+        <ul class="credintial">
+          <li><a style="border-right:1px solid #c3a06f " href="javascript:void(0)" class="header-search-button2 cre-btn d-sm-none d-none mt-1">SEARCH</a></li>
+          <li><a style="border-right:1px solid #c3a06f " href="/account/login" class="cre-btn">Log in</a></li>
+          <li><a style="padding-left:0px" href="/account/register" class="cre-btn">Sign up</a></li>
+        </ul>
+      </div>
+      <!-- <ul class="sidebar-nav">
+        <li class="sidebar-brand brand-heading">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Shop
+        </a>
+          <div class="dropdown">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item  one" href="/collections/all">All Products</a>
+              <a class="dropdown-item  one" href="/collections/gin">GIN</a>
+              <a class="dropdown-item  one" href="/collections/vodka">VODKA</a>
+            </div>
+          </div>
+        </li>
+        <li class="brand-heading">
+          <a href="/pages/our-story">Our Story</a>
+        </li>
+        <li class="brand-heading">
+          <a href="/pages/our-recipes">Our Recipes</a>
+        </li>
+        <li class="brand-heading">
+          <a href="/pages/contact">Contact</a>
+        </li>
+      </ul>    -->
+  <ul class="sidebar-nav">
+  {% for link in linklists.main-menu.links %}
+    <li class="nav-item {% if link.links.size > 0 %} dropdown{% endif %} sidebar-brand brand-heading">
+      <a href="{{ link.url }}" class="nav-link{% if link.links.size > 0 %} dropdown-toggle{% endif %}" {% if link.links.size > 0 %}data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}>
+        {{ link.title }}
+      </a>
+      {% if link.links.size > 0 %}
+        <div class="dropdown-menu dropdown">
+          {% for child_link in link.links %}
+            <a class="dropdown-item one" href="{{ child_link.url }}">{{ child_link.title }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+    </div> 
+  </header>
+ 
+
+
+{% schema %}
+ {
+    "name": "Header",
+    "settings": [
+     {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo Image"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+{% javascript %}
+ 
+ const input = document.getElementById("search-input");
+  const searchBtn = document.getElementById("search-btn");
+
+  const expand = () => {
+    searchBtn.classList.toggle("search_close");
+    input.classList.toggle("search_square");
+  };
+
+  searchBtn.addEventListener("click", expand);
+
+{% endjavascript %} 
+
+<script>
+ 
+ //window.addEventListener("scroll", function() {
+  //var navbarWrapper = document.querySelector("#sidebar-wrapper");
+  //var bodySection = document.querySelector(".body-section");
+
+  //if (window.pageYOffset > 0) {
+   // navbarWrapper.classList.add("active");
+   // bodySection.style.overflow = "hidden";
+   //} else {
+   // navbarWrapper.classList.remove("active");
+    //bodySection.style.overflow = "auto";
+  //}
+//}); 
+</script> 

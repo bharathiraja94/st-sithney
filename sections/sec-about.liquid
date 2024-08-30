@@ -1,0 +1,46 @@
+{%for banner in shop.metaobjects.banner.values %}
+
+<div> <img src="{{ banner.first_image  }}" class="img-fluid bannerindex"  />
+       <img src="{{ banner.second_image  }}" class="img-fluid" />
+</div>
+ {% endfor %}
+<div class="ourstory">
+  <div class="container">
+    <div class="row">
+       {%for image_with_text in shop.metaobjects.image_with_text_content.values %} 
+        <div class="col col-md-6 col-sm-12 col-xs-12 col-12 d-flex align-items-center">
+           <div class="ourstorybox">
+              <h2> {{ image_with_text.heading }}</h2>
+              <p> {{ image_with_text.description }}</p>
+             </div>
+         </div>
+       <div class="col col-md-6 col-sm-12 col-xs-12 col-12 ">
+            <div class="ourstorybox">
+               <img src="{{ image_with_text.image }}" class="img-fluid" /> 
+            </div>
+       </div>
+    {% endfor %} 
+  </div>
+</div>
+</div>
+
+{% schema %}
+ {
+  
+    "name": "sec-about",
+    "tag": "section",
+    "class": "sec-about",
+    
+   "presets": [
+      {
+        "name": "sec-about"
+      }
+    ]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

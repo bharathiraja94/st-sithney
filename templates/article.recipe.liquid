@@ -1,0 +1,101 @@
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count %}
+{% endif %}
+<section class="cocktail">
+  <img src="{{ article.image.src | img_url: 'medium' }}" class="img-fluid">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center innerpagebannerbox">
+      <div class="text-center">
+        <h2 class="head">{{ article.title }}</h2>
+        <div class="taghead">
+           <p>{{ article.excerpt }}</p>
+          <span class="d-block">
+           <img src="https://cdn.shopify.com/s/files/1/0822/0514/7429/files/clock.png?v=1694083459" class="clock">
+           {{ article.metafields.custom.ready_to_time  }}</span>
+        </div>
+        <div class="para">{{ article.content }}</div>
+      </div>
+    </div>
+    <a href="{{ pages['our-recipes'].url }}" class="back-to-recipes">  back to recipes</a>
+  </div>
+</section>
+<div>
+  <div class="container">
+    <div>
+      {% if blog.comments_enabled? %}
+        <h2>{{ number_of_comments }} comments</h2>
+        {% paginate article.comments by 5 %}
+          {% for comment in article.comments %}
+            <div>
+              <div>{{ comment.content }}</div>
+              {{ comment.author }} @ {{ comment.created_at }}
+            </div>
+          {% endfor %}
+          {% if paginate.pages > 1 %}
+            {{ paginate | default_pagination }}
+          {% endif %}
+        {% endpaginate %}
+
+        <div>
+          {% form 'new_comment', article %}
+            {{ form.errors | default_errors }}
+            <label for="CommentAuthor">name</label>
+            <input
+              type="text"
+              name="comment[author]"
+              id="CommentAuthor"
+              placeholder="name"
+              value="{{ form.author }}"
+              autocapitalize="words">
+
+            <label for="CommentEmail">email</label>
+            <input
+              type="email"
+              name="comment[email]"
+              id="CommentEmail"
+              placeholder="email"
+              value="{{ form.email }}"
+              autocorrect="off"
+              autocapitalize="off">
+
+            <label for="CommentBody">message</label>
+            <textarea
+              name="comment[body]"
+              id="CommentBody"
+              placeholder="message">{{ form.body }}</textarea>
+
+            <input type="submit" value="post">
+          {% endform %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="receipe">
+   <div class="container">
+    <div class="row">
+       <div class="col col-md-5 col-sm-12 col-xs-12 col-12">
+            <div class="ingredient">
+                {{ article.metafields.custom.ingredients_  }}
+                </div>
+            </div>
+      <div class="col col-md-7 col-sm-12 col-xs-12 col-12">
+            <div class="method method_left ">
+                  {{ article.metafields.custom.method }}
+                  <a href="{{ article.metafields.custom._download_recipes }}"target="_blank"  download="ingredients.pdf"class="btn btn-primary checkout download-btn">
+                    Download Recipes</a>
+              </div>
+      </div>
+</div>
+</div>
+</div>
+{% section 'follow-as' %}
+
+ {% comment %} {% for article in blogs['all-cocktail'].articles %}
+  {% if article.title == 'cornish coastpath mojito' %}
+    {% section 'sec-cornish-coastpath-mojito' %}
+    {% elsif article.title == 'sec-spanish-gin-tonic' %}
+  {% endif %}
+{% endfor %} {% endcomment %}

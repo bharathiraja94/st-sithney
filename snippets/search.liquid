@@ -1,0 +1,154 @@
+ {% comment %} <form id="content_search_box" action="{{ routes.search_url }}"method="get" role="search">
+  <input
+    type="search"
+    name="q"
+    class="search_input"
+    id="search-input"
+    value="{{ search.terms | escape }}">
+  <button
+    type="reset"
+    class="search_btn"
+    id="search-btn"></button>
+</form> 
+{% if search.performed %}
+{% for item in search.results %}
+
+<div class="col-md-4 col-sm-12 col-xs-12">
+<div class="product" style="text-align: center;">
+<img
+src="{{ item.featured_image.src | img_url: 'large' }}"
+alt="{{ item.featured_image.alt | escape }}"
+class="img-fluid">
+<div class="text-center product_innerbox">
+<h2>Saint Sithney</h2>
+<p>
+<a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">{{ product.title }}</a>
+</p>
+<span class="d-block">{{ product.price | money }}</span>
+{% unless product.available %}<br><strong>sold out</strong>
+{% endunless %}
+</div>
+</div>
+</div>
+{% else %}
+no results
+{% endfor %}
+{% endif %}
+<style>
+  #content_search_box {
+    z-index: 99;
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    top: 20%;
+    left: 130%;
+  }
+
+  #content_search_box.on {
+    animation-name: in-out;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+  }
+
+  .search_input {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c3a06f;
+    border-radius: 50%;
+    background: none;
+    outline: 0;
+    transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
+    transition-delay: 0.4s;
+    transform: translate(4%, -50%);
+  }
+
+  .search_btn {
+    background: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 44px;
+    padding: 0;
+    border-radius: 100%;
+    outline: 0;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    transform: translate(4%, -50%);
+  }
+
+  .search_btn:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 4px;
+    background-color: #c3a06f;
+    transform: rotate(45deg);
+    margin-top: 11px;
+    margin-left: -9px;
+    transition: 0.2s ease-in-out;
+  }
+
+  .search_close {
+    transition: 0.4s ease-in-out;
+    transition-delay: 0.4s;
+  }
+
+  .search_close:before {
+    content: "";
+    position: absolute;
+    width: 27px;
+    height: 4px;
+    margin-top: -1px;
+    margin-left: -13px;
+    background-color: #c3a06f;
+    transform: rotate(45deg);
+    transition: 0.2s ease-in-out;
+  }
+
+  .search_close:after {
+    content: "";
+    position: absolute;
+    width: 27px;
+    height: 4px;
+    background-color: #c3a06f;
+    margin-top: -1px;
+    margin-left: -13px;
+    cursor: pointer;
+    transform: rotate(-45deg);
+  }
+
+  .search_square {
+    box-sizing: border-box;
+    padding: 0 0 0 23px;
+    width: 250px;
+    height: 41px;
+    border: 2px solid #c3a06f;
+    border-radius: 0;
+    background: none;
+    color: #fff;
+    font-family: ' Roboto';
+    font-size: 18px;
+    font-weight: 400;
+    outline: 0;
+    transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+    transition-delay: 0.4s, 0s, 0.4s;
+    transform: translate(4%, -50%);
+  }
+</style>
+
+<script>
+  const input = document.getElementById("search-input");
+  const searchBtn = document.getElementById("search-btn");
+
+  const expand = () => {
+    searchBtn.classList.toggle("search_close");
+    input.classList.toggle("search_square");
+  };
+
+  searchBtn.addEventListener("click", expand);
+</script> {% endcomment %}

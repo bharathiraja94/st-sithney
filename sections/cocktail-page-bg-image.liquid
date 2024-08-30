@@ -1,0 +1,34 @@
+<section class="cocktail">
+     <img src="{{ section.settings.Image |img_url: 'master'  }}" class="img-fluid">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center innerpagebannerbox">
+        <h2 class="head">{{ page.title }}</h2>
+      </div>
+    </div>
+  </section>
+
+
+{% schema %}
+  {
+    "name": "Image banner",
+    "settings": [
+       {
+        "type": "image_picker",
+        "id": "Image",
+        "label": "Background Image"
+      }
+    ],
+     "presets": [
+      {
+        "name": "Image banner"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

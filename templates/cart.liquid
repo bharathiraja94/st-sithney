@@ -1,0 +1,245 @@
+<section class="pt-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <h1 class="heading">YOUR BASKET</h1>
+        <a style="color:#403a74;text-decoration:underline;font-weight:700;line-height:2.5px;margin-top: 24px;" href="/collections/all">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="basket_section">
+  {% if cart.item_count > 0 %}
+
+    <div class="d-block d-sm-none">
+      <form
+        action="/cart"
+        method="post"
+        novalidate>
+        {% for item in cart.items %}
+          <div style="border-bottom: 1px solid #0a0340;" class="d-flex justify-content-between">
+            <div class="basket  text-left">
+              <div class="d-flex justify-content-start">
+                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                <div>
+                  <h4>{{ item.product.title }}</h4>
+                  <p class="product-type">{{ item.product.type}}</p>
+                  <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Remove
+                  </a>
+                  <!--                    <div class="quantity buttons_added text-center">
+                  <input type="button" value="-" class="minus" />              
+                  <input class="input-text qty text" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
+                  <input type="button" name="update" value="+" class="plus" />
+                  </div> -->
+                  <div class="quantity buttons_added sm-text-center d-text-left ">
+                    <input
+                      type="button"
+                      value="-"
+                      class="minus" />
+                    <input
+                      class="input-text qty text"
+                      type="number"
+                      name="updates[]"
+                      id="updates_{{ item.key }}"
+                      value="{{ item.quantity }}"
+                      min="0">
+                    <input
+                      type="button"
+                      name="update"
+                      value="+"
+                      class="plus" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="basket basket_mob">
+              <p>{{ item.price | money }}</p>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="row">
+          <div class="col-md-12 subtotal text-center p-3">
+            <div class="d-flex justify-content-between sm-px-3 mx-5 pl-5">
+              <h5>subtotal</h5>
+              <h5>{{ cart.total_price | money }}</h5>
+            </div>
+            <p>
+              <span>Tax included. Shipping calculated at checkout.</span>
+            </p>
+            {% comment %} <button
+            type="submit"
+            name="update"
+            class="btn btn-success"
+            style="margin-bottom: 50px;">UPDATE CART</button> {% endcomment %}
+            <button
+              type="submit"
+              name="checkout"
+              class="btn btn-primary">CHECKOUT</button>
+
+            <a href="/cart" class="d-block text-center mt-3">View Basket</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="container  d-none d-sm-block">
+      <form
+        action="/cart"
+        method="post"
+        novalidate>
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <h3>PRODUCT</h3>
+          </div>
+          <div class="col-md-2">
+            <h3>PRICE</h3>
+          </div>
+          <div class="col-md-3">
+            <h3 class="text-center">QUANTITY</h3>
+          </div>
+          <div class="col-md-2">
+            <h3 class="text-center">TOTAL</h3>
+          </div>
+        </div>
+
+        <div class="row no-gutters">
+          {% for item in cart.items %}
+            <div class="col-md-5">
+              <div class="basket">
+                <div class="d-flex justify-content-start">
+                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                  <div>
+                    <h4>{{ item.product.title }}</h4>
+                    <p class="product-type">{{ item.product.type }}</p>
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Remove</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="basket mt-5">
+               <!-- <p>{{ item.price | money }}</p> -->
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="basket mt-5">
+                <div class="quantity buttons_added text-center">
+                  <input
+                    type="button"
+                    value="-"
+                    class="minus" />
+                  <input
+                    class="input-text qty text"
+                    type="number"
+                    name="updates[]"
+                    id="updates_{{ item.key }}"
+                    value="{{ item.quantity }}"
+                    min="0">
+                  <input
+                    type="button"
+                    name="update"
+                    value="+"
+                    class="plus" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="basket mt-5">
+                <div class="d-flex align-items-center justify-content-center">
+                  <p>
+                    {% if item.original_line_price != item.line_price %}
+                      {{ item.original_line_price | money }}{% endif %}
+                    {{ item.line_price | money }}
+                    {% for discount in item.discounts %}
+                      {{ discount.title }}{% endfor %}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+
+          {% endfor %}
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-md-3 subtotal text-left">
+            {% comment %} <button
+            type="submit"
+            name="update"
+            class="btn btn-primary">UPDATE CART</button> {% endcomment %}
+            <div  class="submit_total d-flex justify-content-between px-3">
+              <h5>Subtotal</h5>
+              <h5>{{ cart.total_price | money }}</h5>
+            </div>
+            <p class="px-3">
+              <span>Tax included. Shipping calculated at checkout.</span>
+            </p>
+
+            <button
+              type="submit"
+              name="checkout"
+              class="btn btn-primary checkout mx-3">CHECKOUT</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  {% else %}
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <p>Cart is empty</p>
+      </div>
+    </div>
+  {% endif %}
+
+</section>
+
+<script>
+  function wcqib_refresh_quantity_increments() {
+    jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function(a, b) {
+      var c = jQuery(b);
+      c.addClass("buttons_added"),
+      c.children().first().before('<input type="button" value="-" class="minus" />'),
+      c.children().last().after('<input type="button" value="+" class="plus" />')
+    })
+  }
+  String.prototype.getDecimals || (String.prototype.getDecimals = function() {
+    var a = this,
+      b = ("" + a).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+    return b
+      ? Math.max(0, (
+        b[1]
+          ? b[1].length
+          : 0
+      ) - (
+        b[2]
+          ? + b[2]
+          : 0
+      ))
+      : 0
+  }),
+  jQuery(document).ready(function() {
+    wcqib_refresh_quantity_increments()
+  }),
+  jQuery(document).on("updated_wc_div", function() {
+    wcqib_refresh_quantity_increments()
+  }),
+  jQuery(document).on("click", ".plus, .minus", function() {
+    var a = jQuery(this).closest(".quantity").find(".qty"),
+      b = parseFloat(a.val()),
+      c = parseFloat(a.attr("max")),
+      d = parseFloat(a.attr("min")),
+      e = a.attr("step");
+    b && "" !== b && "NaN" !== b || (b = 0),
+    "" !== c && "NaN" !== c || (c = ""),
+    "" !== d && "NaN" !== d || (d = 0),
+    "any" !== e && "" !== e && void 0 !== e && "NaN" !== parseFloat(e) || (e = 1),
+    jQuery(this).is(".plus")
+      ? c && b >= c
+        ? a.val(c)
+        : a.val((b + parseFloat(e)).toFixed(e.toFixed(0)))
+      : d && b <= d
+        ? a.val(d)
+        : b > 0 && a.val((b - parseFloat(e)).toFixed(e.toFixed(0))),
+    a.trigger("change")
+  });
+</script>

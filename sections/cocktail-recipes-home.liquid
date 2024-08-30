@@ -1,0 +1,35 @@
+ 
+
+ <div class="container pt-100 d-none d-sm-block">
+   {% assign ginBlog = blogs['gin']%}
+{% paginate ginBlog.articles by 3 %}
+    <div class="row">
+         {% for article in ginBlog.articles %}
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="gin text-center">
+              {% if article.image %}
+                <img src="{{ article.image.src | img_url: 'medium' }}" class="img-fluid">
+              {% else %}
+                <img src="{{ 'cornish.png' | asset_url }}" class="img-fluid 1">
+              {% endif %}
+              <h3> <a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <p class="mt-5 mt-md-4 mt-sm-3 readmore">
+                <a href="{{ article.url }}">Raed More</a>
+              </p> 
+            </div>
+          </div>
+              {% endfor %}
+    </div>
+   {% endpaginate %}
+    <div class="d-flex justify-content-center">
+      <a href="{{ section .settings.button_url }}" class=" btn btn-primary buynow1">{{ section.settings.richtext }}</a>
+    </div>
+  </div>
+
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

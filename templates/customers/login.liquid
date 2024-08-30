@@ -1,0 +1,67 @@
+<!-- /templates/customers/login.liquid -->
+<section class="pt-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center login">
+        <h1 class="heading">LOG IN</h1>
+        <a href="/account/register">Not yet a member? Click here to Sign Up.</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-3 text-center">
+
+        {%- form 'customer_login', novalidate: 'novalidate' -%}
+          {%- if form.errors -%}
+            <h2
+              class="form__message"
+              tabindex="-1"
+              autofocus>
+              <span class="visually-hidden">{{ 'accessibility.error' | t }}
+              </span>
+              {{ 'templates.contact.form.error_heading' | t }}
+            </h2>
+            {{ form.errors | default_errors }}
+          {%- endif -%}
+
+
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email Address"
+            name="customer[email]"
+            id="CustomerEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            {% if form.errors contains 'form' %}
+            aria-invalid="true"
+            {% endif %}>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            name="customer[password]"
+            id="CustomerPassword"
+            autocomplete="current-password"
+            {% if form.errors contains 'form' %}
+            aria-invalid="true"
+            {% endif %}>
+          <a href="#" class="mb-3 d-block forget_pass">Forgotten Password?</a>
+          <input
+            type="submit"
+            value="submit"
+            class="btn btn-primary submit">
+          <div class="d-block my-4 remember">
+            <input type="radio" value="remember me">
+            <label>Remember me</label>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>

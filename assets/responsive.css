@@ -1,0 +1,788 @@
+@media only screen and (min-width: 280px) and (max-width: 320px) {
+  
+.saint_sithney_inner{
+  width: 223px !important;
+
+}
+.saint_sithney_inner p{
+  font-size: 10px !important;
+}
+.buy_btn{
+   right: 8% !important;
+    z-index: 3;
+    top: 63% !important;
+    font-size: 11px;
+}
+.signform input{
+  width: 240px !important;
+}
+}
+@media only screen and (min-width: 310px) and (max-width: 375px) {
+  #sidebar-wrapper.active{
+    width: 320px !important;
+
+  }
+
+}
+@media only screen and (min-width: 310px) and (max-width: 767px) {
+  .age_confirm {
+    width: 100%;
+  }
+  .search_box {
+    width: 182px;
+  }
+  .header-search-form.active {
+    top: -19px;
+    z-index:9999;
+    left: 17%;
+
+}
+  .dropdown-cart.show {
+    left: 15px!important;
+    width: 300px;
+
+  }
+  .box-minmax {
+    width: 100%;
+  }
+  .rs-range {
+    width: 100%;
+  }
+  #menu-toggle {
+    margin-left: 10px;
+  }
+  .menu {
+    margin-left: 10px !important;
+  }
+  .logo, .logoDefault {
+    width: 130px !important;
+    margin-top: 10px;
+  }
+  header{
+margin-top:-12px;
+display:block;
+}
+#sidebar-wrapper{
+  margin-left: -400px;
+
+}
+#sidebar-wrapper.active {
+  left: 400px;
+  width: 400px;
+}
+
+  .newsletter,
+  .footerbottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .newsletterfollow {
+    float: initial;
+    margin-top: 20px;
+    flex-direction: column;
+    text-align: center;
+    align-items: unset;
+
+  }
+  .follow-heading{
+    border: 0;
+    padding: 0;
+  }
+  .signform {
+    margin: 10px 0;
+  }
+  .signform input{
+    width: 249px;
+  }
+  .copyright_text {
+    font-size: 12px;
+  }
+  .cocktailtab {
+    padding: 20px 0 !important;
+  }
+  /* .cocktaillist {
+    padding: 20px 0;
+  } */
+
+  .gin{
+    margin-top:20px;
+     margin-bottom:20px; 
+     margin-left: 0px;
+  }
+  .gin img {
+    width: 100%;
+    height: 332px;
+    object-fit: cover;
+  }
+  .gin h3 {
+    font-size: 18px;
+  }
+  /* .gin p,
+  .gin span {
+    font-size: 12px;
+    text-decoration: underline;
+  } */
+  .innerpagebannerbox .head {
+    text-align: center;
+  }
+  .basket_section h3 {
+    text-align: center;
+  }
+  .basket {
+    padding: 10px 0;
+    min-height: auto;
+    margin-top: 0 !important;
+    text-align: center;
+    border-bottom: none;
+  }
+  .basket h4 {
+    text-align: left;
+  }
+  .heading {
+    font-size: 32px;
+  }
+  .contact_heading {
+    font-size: 70px;
+  }
+  .contact_heading span {
+    position: absolute;
+    top: 51px;
+    margin-left: -24px;
+  }
+  .contactimg {
+    width: 57%;
+    margin-top: 0px;
+  }
+  .contactform {
+    min-height: auto;
+  }
+  .contactform form {
+    margin-left: 0;
+    margin-top: 25px;
+  }
+  .pt-150 {
+    padding-top: 100px;
+  }
+  .ourstory {
+    padding: 0;
+  }
+  .ourstorybox {
+    padding: 20px 0;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+  
+  .ourstorybox  img{
+  	width:100%;
+  }
+  .ourstorybox h2 {
+    font-size: 50px;
+    margin: 0 0 20px;
+  }
+  .ourstorybox p{
+    margin-right: 0px;
+  }
+
+  .product_detail {
+    padding: 100px 0 0;
+    background-position: 0 28%;
+    background-size: contain;
+  }
+  #featured {
+    width: 100%;
+    height: 300px;
+  }
+  .product_detail_right {
+    margin-top: 30px;
+  }
+  .cocktail img {
+    width: 100%;
+    height: 700px;
+  }
+  
+  
+  .overlay {
+    height: 700px;
+  }
+  
+  .innerpagebannerbox {
+    width: 100%;
+    padding: 0 30px;
+  }
+  .innerpagebannerbox p{
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .innerpagebannerbox .para {
+     padding: 0 ; 
+}
+.innerpagebannerbox .head{
+  font-size: 50px;
+}
+  .holder {
+    margin-top: 30px;
+    top: -5px;
+  }
+  .holder .wave-line::after {
+    font-size: 16px;
+  }
+  .accordion-button {
+    font-size: 15px;
+    padding: 25px 0;
+  }
+  .accordion-body p {
+    text-align: justify;
+    font-size: 12px;
+  }
+  .product_detail_right a {
+    font-size: 30px;
+    position: relative;
+    /* margin-top: -45px;
+    float: right; */
+  }
+  .quantity{
+    margin-top: 10px;
+  }
+  .basket p {
+    margin-bottom: 0;
+  }
+  .basket_section {
+    margin: 0px 0;
+    padding: 30px 0;
+}
+  .method .btn {
+    letter-spacing: 1px;
+  }
+  .checkout {
+    margin-top: 0px;
+  }
+  .receipe{
+    padding: 50px 0 50px;
+  }
+
+  .taghead {
+    display: none;
+  }
+  .indexheading {
+    font-size: 25px;
+    line-height: 20px;
+  }
+  .indexheading .spanof {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  .indexheading span {
+    margin-left: 14px;
+    display:block;
+  }
+  .bannerbtn {
+    position: absolute;
+    bottom: 10px;
+  }
+  .indexheading {
+    top: 0;
+    left:auto;
+    width: 90% !important;
+    position: relative;
+  }
+  .f-btn{
+    margin-top: 1rem;
+  }
+  .index_second_flex {
+    flex-direction: column;
+    text-align:justify;
+    font-size:14px;
+  }
+  .index_second_flex img {
+    margin-top: 0px !important;
+    width: 75%;
+    margin: 0 auto -17px;
+  }
+  .index_second_flex .mt-300 {
+    margin-top: 50px;
+    margin-left:0;
+    text-align:center;
+    margin-right: 0;
+  }
+  .index_second {
+    background-size: contain !important;
+    padding: 40px 0;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+  .innerpagebannerbox .followbtn {
+    letter-spacing: 1px;
+    padding: 10px 25px;
+    font-size: 13px;
+
+  }
+  .saint_heading {
+    font-size: 50px;
+    line-height: 41px;
+  }
+  .saint_heading span {
+    margin-left: 26px;
+  }
+  .saint_sithney {
+    padding: 30px 0 0;
+  }
+  .saint_body {
+    margin-top: -10px;
+    flex-direction: column;
+  }
+  .saint_box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .saint_box img {
+    position: relative;
+    z-index: 1;
+    margin-left: -99px;
+    margin-top: 30px;
+  }
+  
+  .saint_box .img1 {
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    margin-top: 100px;
+    margin-left: -65px;
+    height: 425px;
+}
+.saint_box .img2{	   
+    margin-top: 100px;
+    margin-left: -75px;
+    height: 450px;
+}
+
+  .saint_sithney_inner {
+    width: 270px;
+    left: 80px;
+    padding: 20px 20px 20px 80px;
+    min-height:452px;
+  }
+  .saint_sithney_inner p {
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 2px;
+    margin-right: 4px;
+
+  }
+  .contact_section.pt-100{
+    padding-bottom:0 !important;
+  }
+  .cocktailreceipe {
+    margin-top: 30px;
+  }
+  .cocktailreceipe .pt-100 {
+    padding-top: 10px;
+  }
+  .cocktailreceipe .btn {
+    letter-spacing: normal;
+  }
+
+  .followus {
+    padding: 0 0 80px !important;
+    background-repeat: no-repeat;
+  }
+  .instapost .gal1 {
+    margin-top: 125px;
+    margin-bottom: 5px;
+  }
+  .instapost .gal2{
+    width: 200px;
+    height: auto;
+  }
+  
+  .instapost .gal3 {
+    width:160px;
+    height:auto;
+  }
+  
+  .instapost .galmob {
+    margin-top: 0;
+  }
+  .saint_body .saint_box {
+    z-index: auto;
+  }
+  .thank_you {
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #28295b;
+    font-weight: 600;
+    font-family: "Oswald";
+    line-height: 45px;
+  }
+  .thank_you span {
+    margin-left: 0;
+  }
+
+  .method{
+    border-left: 0;
+    padding-left: 0;
+  }
+  .ingredient{
+    /* text-align: center; */
+    padding-left: 20px;
+    padding-right: 0; 
+  }
+  .method h3{
+    margin-top: 25px;
+  }
+  .method ul li span {
+    font-size: 23px;
+    left: -40px;
+  }
+  .method ul{
+    margin-left: 20px;
+  }
+ .method_left:before{
+  border-left:unset;
+ }
+  #slider .thumbnail {
+    width: 110px;
+    height: 110px;
+  }
+
+  .wherebox{
+    flex-direction: column;
+    text-align:center;
+  }
+  .where_heading1  {
+    font-family: Oswald;
+    text-transform: uppercase;
+    color: #d1d0db;
+    font-size: 37px;
+    text-align:center;
+    margin-bottom: -6px;
+    letter-spacing: 4px;
+    font-weight: 600;
+  }
+  .where_heading  span{
+    margin-left:0;
+  }
+  
+  .wherebox p{
+  	text-align: center;
+    font-size: 14px;
+    margin-top: 25px;
+  }
+  .cocktailtopimg {
+    position: relative;
+    top: auto;
+    margin-bottom: -35px;
+  }
+  
+  .carousel-indicators{
+  	display:none;
+  }
+  .product_innerbox {
+    top: 64%;
+  }  
+  /* .footer_box h6 {
+    font-size: 18px;
+  } */
+  .footer_box h6  {
+    font-size: 15px;
+    font-weight: 600;
+  } 
+  .footer_link li a {
+    font-size: 13px;
+  }
+  .saint_sithney .headimg {
+    margin-left:-35px;
+	}
+  
+  .carousel-control-next, .carousel-control-prev {
+    align-items: baseline;
+    opacity: 1;
+  }
+  
+  .carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: transparent no-repeat center center;
+    background-size: 100% 100%;
+    bottom: 42px;
+    position: absolute;
+  }
+  .carousel-control-prev-icon {
+    border-right: solid 10px rgb(10 3 64);
+    border-bottom: solid 10px transparent;
+    border-top: solid 10px transparent;
+  }
+  .carousel-control-next-icon {
+    border-left: solid 10px rgb(10 3 64);
+    border-bottom: solid 10px transparent;
+    border-top: solid 10px transparent;
+  }
+  .social_list{
+  	margin-left:0;
+  }
+  
+  .allproductslider .carousel-control-next-icon, .allproductslider .carousel-control-prev-icon {
+    bottom: 50%;    
+  }
+  .followusmobile{
+    padding-top:100px;
+  }
+  .buy_btn {
+    position: absolute;
+    right: 30%;
+    z-index: 3;
+    top: 69%;
+    padding: 7px 20px;
+}
+.buy_bt2{
+   top: 65% !important;
+   right: 28%;
+}
+.content h3{
+  font-size: 14px;
+}
+.content img{
+  width: 25px;
+    height: 25px;
+}
+
+}
+@media only screen and (min-width: 320px) and (max-width: 359px) {
+  .content h3{
+    font-size: 10px !important;
+  }
+  .overlay_mob_img{
+    height: 44%;
+  }
+  .overlay_img:hover .content_mob{
+    padding: 15px 0px !important;
+  }
+  .overlay_img:hover .big{
+    padding: 58px 38px !important;
+  }
+  .overlay_img:hover .content_mob_1 {
+    padding: 37px 20px;
+}
+}
+
+
+@media only screen and (min-width: 360px) and (max-width: 375px) {
+  .buy_btn{
+    right: 20%;
+    top: 69%;
+  }
+  .buy_bt2{
+    top: 66%!important;
+    right: 20%!important;
+
+  }
+  .overlay_mob_img{
+    height: 54%;
+  }
+ .overlay_img:hover .content_mob {
+  padding: 28px 11px;
+}
+.overlay_img:hover .big{
+  padding: 46px 22px !important;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .indexheading {
+    font-size: 25px;
+    line-height: 20px;
+    top: 0;
+    width: 543px;
+  }
+  .innerpagebannerbox p{
+    font-size: 16px;
+
+  }
+  .index_second_flex .mt-300 {
+    margin-left: 30px;
+    margin-right: 10px;
+}
+  .mt-300 {
+    margin-top: 200px;
+}
+.headtext,
+.footer_box h6,
+.gin h3 {
+  font-size: 15px;
+}
+.signform {
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.footer_link li a,
+.gin p,
+.btn,
+.copyright_text,
+p{
+  font-size: 12px;
+}
+
+  .saint_heading {
+    font-size: 97px;
+    line-height: 80px;
+  }
+  .saint_heading span {
+    display: block;
+    margin-left: 51px;
+  }
+  .saint_body {
+    margin-top: -40px;
+    flex-direction: column;
+  }
+  .indexheading span {
+    margin-left: 35px;
+    display: block;
+    margin-top: 2px;
+  }
+  .indexheading .spanof {
+    display: block;
+    margin-left: 6px;
+    margin-top: 4px;
+    font-size: 23px;
+  }
+  .cocktailtopimg {
+    position: absolute;
+    top: 45px;
+  }
+  .newsletter,
+  .newsletterfollow {
+    flex-direction: column;
+  }
+  .followus {
+    background-repeat: no-repeat;
+  }
+  
+  .contact_heading span {
+    position: absolute;
+    top: 80px;
+    margin-left: 0;
+    right: -156px;
+  }
+  .thankyou {
+    padding: 120px 0 80px;
+  }
+  .thank_you {
+    font-size: 150px;
+    line-height: 124px;
+  }
+  .thank_you span {
+    margin-left: 367px;
+  }
+
+    .innerpagebannerbox {
+      top: 41%;
+  }
+  .saint_box {
+    width: 100%;
+}
+  .innerpagebannerbox .head{
+    font-size: 22px;
+  }
+  .taghead {
+    position: relative;
+    padding: 10px 0;
+    margin: 5px 0;
+}
+/* .innerpagebannerbox p {
+  font-size: 12px;
+} */
+.innerpagebannerbox span {
+  font-size: 9px;
+}
+.innerpagebannerbox .para {
+  padding: 0 0%;
+}
+.para p {
+  font-size: 8px;
+}
+.instapost .gal2{
+  width: 193px;
+  height: 198px;
+    margin-bottom: 5px;
+
+}
+.instapost .gal4 {
+  width: 193px;
+  height: 198px;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+.instapost .gal3 {
+  width:193px;
+  height: 198px;
+}
+.content img{
+  width: 25px;
+    height: 25px;
+}
+.content h3{
+  font-size: 11px;
+}
+.overplay_s_image{
+  height: 45%;
+}
+.overlay_img:hover .content_3 {
+  padding: 34px 13px !important;
+}
+.overlay_img:hover .content{
+  padding: 55px 28px;
+}
+.overplay_s4_image{
+  height: 97%;
+}
+.overlay_img:hover .content_2{
+  padding: 56px 27px!important;
+}
+.overplay_s1_image{
+  height: 37%;
+}
+.overlay_img:hover .content_3_1{
+  padding: 15px 0px;
+}
+.signform input {
+  margin-left: 0; 
+    font-size: 14px;
+}
+.submit_total{
+  width: 194px;
+}
+.ourstorybox img{
+  width: 330px;
+}
+
+.holder .wave-line::after {
+  font-size: 14px;
+}
+#slider .thumbnail{
+  width: 107px;
+
+}
+.buy_btn{
+  position: absolute;
+    right: 44%;
+    z-index: 3;
+    top: 61%;
+}
+.follow-heading{
+  padding-left: 11px;
+}
+}
+@media only screen and (min-width: 1440px) and (max-width: 2640px) {
+  .container-fluid{
+    width: 1400px;
+  }
+  .buy_btn{
+    right: 39%;
+  }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .buy_btn{
+    right: 33%;
+  }
+}

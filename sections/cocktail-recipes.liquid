@@ -1,0 +1,194 @@
+<div class="cocktailreceipe position-relative">
+  {% assign ginBlog = blogs['gin']%}
+ 
+  <img src="{{ section .settings.bg_image | img_url: 'master' }}" class="img-fluid cocktailtopimg">
+  
+  <div class="d-block d-sm-none">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+          <div
+         id="carouselExampleIndicators"
+         class="carousel slide allproductslider"
+         data-ride="carousel">
+         <ol class="carousel-indicators">
+          <li
+            data-target="#carouselExampleIndicators"
+            data-slide-to="0"
+            class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+           </ol>
+                <div class="carousel-inner">
+                   {% assign my_counter = 1 %}
+                     {% paginate ginBlog.articles by 10 %}
+                           {% for article in ginBlog.articles %}
+                             {% if my_counter == 1 %}
+                {% assign sctiveCls = 'active' %}
+              {% else if %}
+                {% assign sctiveCls = '' %}
+              {% endif %}
+                   <div class="carousel-item {{ sctiveCls }}">
+                    <div class="gin text-center">
+                       {% if article.image %}
+                           <img src="{{ article.image.src | img_url: 'medium' }}" class="img-fluid">
+                         {% else %}
+                            <img src="{{ 'cornish.png' | asset_url }}" class="img-fluid 1">
+                        {% endif %}
+                        <h3> <a href="{{ article.url }}">{{ article.title }}</a></h3>
+                         <p class="mt-3 mt-md-4 mt-sm-3 readmore">
+                         <a href="{{ article.url }}">Read More</a> </p>  
+                    </div>
+                  </div>
+                   {% assign my_counter = my_counter | plus: 1 %}
+                    {% endfor %}
+               {% endpaginate %}
+                </div>
+                <a
+                  class="carousel-control-prev"
+                  href="#carouselExampleIndicators"
+                  role="button"
+                  data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a
+                  class="carousel-control-next"
+                  href="#carouselExampleIndicators"
+                  role="button"
+                  data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>  
+            </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container pt-100 d-none d-sm-block">
+ 
+    <div class="row">
+       {% paginate ginBlog.articles by 3 %}
+         {% for article in ginBlog.articles %}
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="gin text-center">
+              {% if article.image %}
+                <img src="{{ article.image.src | img_url: 'medium' }}" class="img-fluid">
+              {% else %}
+                <img src="{{ 'cornish.png' | asset_url }}" class="img-fluid 1">
+              {% endif %}
+              <h3> <a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <p class="mt-5 mt-md-4 mt-sm-3 readmore">
+                <a href="{{ article.url }}">Read More</a>
+              </p> 
+            </div>
+          </div>
+        {% endfor %}
+         {% endpaginate %}
+    </div>
+  
+    <div class="d-flex justify-content-center mt-sm-3">
+      <a href="{{ section .settings.button_url }}" class=" btn btn-primary buynow1">{{ section.settings.richtext }}</a>
+    </div>
+  </div>
+    
+  </div>
+
+  
+
+
+{% schema %}
+  {
+    "name": "Cocktail Recipes",
+    "tag": "section",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Top Heading Image"
+      }, {
+        "type": "text",
+        "id": "richtext",
+        "label": "Enter The Name"
+      }, {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button Link"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "image-text-button",
+        "type": "image-text-button",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image_1"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Enter The Heading"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Button Name"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          }, {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image_2"
+          }, {
+            "type": "text",
+            "id": "heading_1",
+            "label": "Enter The Heading"
+          }, {
+            "type": "text",
+            "id": "text_1",
+            "label": "Button Name"
+          }, {
+            "type": "url",
+            "id": "button_link_1",
+            "label": "Button Link"
+          }, {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image_3"
+          }, {
+            "type": "text",
+            "id": "heading_2",
+            "label": "Enter The Heading"
+          }, {
+            "type": "text",
+            "id": "text_2",
+            "label": "Button Name"
+          }, {
+            "type": "url",
+            "id": "button_link_2",
+            "label": "Button Link"
+          }
+        ]
+
+      }
+    ],
+    "presets": [
+      {
+        "name": "cocktail-recipes",
+        "blocks": [
+          {
+            "type": "image-text-button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

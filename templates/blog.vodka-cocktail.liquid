@@ -1,0 +1,71 @@
+{% paginate blog.articles by 6 %}
+    <section>
+      <div class="container">
+        <div class="row cocktaillist">
+          {% for article in blog.articles %}
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <div class="gin">
+                {% if article.image %}
+                  <img src="{{ article.image.src | img_url: 'medium' }}" class="img-fluid">
+                {% else %}
+                  <img src="{{ 'cornish.png' | asset_url }}" class="img-fluid 1">
+                {% endif %}
+                <h3>
+                  <a href="{{ article.url }}">{{ article.title }}</a>
+                </h3>
+                  <p>{{ article.excerpt }}</p>
+                <span class="d-block">
+                  {{ article.metafields.custom.ready_to_time  }}</span>
+              </div>
+            </div>
+          {% endfor %}
+            <!--   <div>
+            <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+            {{ article.author }} @ {{ article.created_at }}
+            <div>
+            {% if article.excerpt.size > 0 %}
+            {{ article.excerpt }}
+            {% else %}
+            <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
+            {% endif %}
+            </div>
+            </div> -->
+         
+  
+        <!-- <div class="d-flex justify-content-center w-100">
+            <ul class="pagination">
+              <li>
+                <a href="#">
+                  <i class="fas fa-arrow-circle-left"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="active">1</a>
+              </li>
+              <li>
+                <a href="#">2</a>
+              </li>
+              <li>
+                <a href="#">3</a>
+              </li>
+              <li>
+                <a href="#">4</a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </a>
+              </li>
+            </ul>
+         </div>  -->
+          
+            {% if paginate.pages > 1 %}
+              {{ paginate | default_pagination }}
+            {% endif %}
+         
+        </div>
+      
+    </div>
+  </section>
+  {% endpaginate %}
+  

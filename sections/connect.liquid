@@ -1,0 +1,73 @@
+<section class="cocktail">
+  <img src="{{ section .settings.bg_image | img_url: 'master' }}" class="img-fluid">
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center innerpagebannerbox">
+      <div class="text-center">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <h2 class="head my-md-5 my-sm-3 my-5 ">{{ block.settings.Heading }}</h2>
+            <p class=" my-md-5 my-sm-3 my-5 ">{{ block.settings.text }}</p>
+            <a href="{{ block .settings .button_url }}" class="btn  followbtn">{{ block.settings.button }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Connect",
+    "class": "connect",
+    "max_blocks": 2,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "text with button",
+        "type": "text_with_button",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "Heading",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "text",
+            "label": "Paragraph"
+          }, {
+            "type": "text",
+            "id": "button",
+            "label": "Button"
+          }, {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "connect",
+        "blocks": [
+          {
+            "type": "text_with_button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
